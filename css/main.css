@@ -1,0 +1,42 @@
+/* 
+    Created on : 26.04.2018
+    Author     : Daniel Kleebinder
+*/
+
+
+/* Main StyleSheet Color: #007F0E*/
+
+
+/* Custom CSS */
+/* ELEMENTS */
+* {
+    scroll-behavior: smooth;
+    font: 400 14px Montserrat, sans-serif;
+    line-height: 1.8;
+}
+body {
+    color: #818181;
+    background-color: #fff;
+}
+
+h2 {
+    font-size: 28px;
+    color: #606060;
+    font-weight: 600;
+}
+
+h4, h4 strong {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+section {
+    padding-bottom: 80px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
