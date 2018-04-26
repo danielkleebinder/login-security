@@ -1,4 +1,16 @@
 <?php session_start(); ?>
+
+<?php
+$action = isset($_GET['action']) ? $_GET['action'] : 'none';
+if ($action === 'login') {
+    require_once './action/login.php';
+}
+if ($action === 'logout') {
+    require_once './action/logout.php';
+}
+$logged_in = isset($_SESSION['logged_in']) ? $_SESSION['logged_in'] : false;
+?>
+
 <!DOCTYPE html>
 <!--
 Author     : Daniel Kleebinder
@@ -6,7 +18,7 @@ Created on : 26.04.2018
 -->
 <html lang="de" dir="ltr">
     <head>
-        <title>Datasecurity | Login</title>
+        <title>Datasecurity | <?php echo $logged_in ? 'Home' : 'Login'; ?></title>
         <link rel="icon" href="favicon.png"/>
 
         <!-- Website meta data -->
@@ -42,21 +54,9 @@ Created on : 26.04.2018
                 <div class="container">
                     <div class="row">
                         <?php
-                        $action = isset($_GET['action']) ? $_GET['action'] : 'none';
-
-                        if ($action === 'login') {
-                            require_once './action/login.php';
-                        }
-                        if ($action === 'logout') {
-                            require_once './action/logout.php';
-                        }
-
-                        $logged_in = isset($_SESSION['logged_in']) ? $_SESSION['logged_in'] : false;
-
                         if (!$logged_in) {
                             require_once 'php/login_form.php';
                         }
-
                         if ($logged_in) {
                             require_once 'php/authenticated.php';
                         }
