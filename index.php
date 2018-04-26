@@ -1,6 +1,25 @@
-<?php session_start(); ?>
+<!--
+Author     : Daniel Kleebinder
+Created on : 26.04.2018
+-->
 
 <?php
+// Make sure https is used
+if ($_SERVER['HTTPS'] != 'on') {
+    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    exit();
+}
+
+// Start the session
+session_start();
+?>
+
+<?php
+if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+    require_once './action/login.php';
+    login_user_with_cookies();
+}
+
 $action = isset($_GET['action']) ? $_GET['action'] : 'none';
 if ($action === 'login') {
     require_once './action/login.php';
@@ -12,11 +31,7 @@ $logged_in = isset($_SESSION['logged_in']) ? $_SESSION['logged_in'] : false;
 ?>
 
 <!DOCTYPE html>
-<!--
-Author     : Daniel Kleebinder
-Created on : 26.04.2018
--->
-<html lang="de" dir="ltr">
+<html lang="en" dir="ltr">
     <head>
         <title>Datasecurity | <?php echo $logged_in ? 'Home' : 'Login'; ?></title>
         <link rel="icon" href="favicon.png"/>
@@ -28,15 +43,15 @@ Created on : 26.04.2018
         <meta name="theme-color" content="#007F0E">
 
         <!-- Bind JavaScript -->
-        <script type="text/javascript" src="js/libs/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/libs/jquery.fancybox.min.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="./js/libs/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="./js/libs/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/libs/jquery.fancybox.min.js"></script>
+        <script type="text/javascript" src="./js/main.js"></script>
 
         <!-- Bind StyleSheets -->
-        <link rel="stylesheet" type="text/css" href="css/libs/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/libs/jquery.fancybox.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/libs/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/libs/jquery.fancybox.min.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/main.css"/>
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
