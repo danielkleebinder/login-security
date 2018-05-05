@@ -23,6 +23,6 @@ Created on : 26.04.2018
     <button type="submit" class="btn btn-default col-md-7">Login</button>
     <button type="reset" onclick="$('.alert').hide();" class="btn btn-danger col-md-offset-1 col-md-4" style="margin-bottom: 25px;">Reset</button>
     <label>
-        <input type="checkbox" name="remember" value="checked" <?php echo isset($remember) ? $remember : ''; ?>> <span>Remember Me</span>
+        <input type="checkbox" name="remember" value="checked" <?php echo isset($remember) ? $remember : ''; ?>> <span>Remember me on this computer</span>
     </label>
 </form>
