@@ -4,14 +4,17 @@ Created on : 26.04.2018
 -->
 
 <?php
+$index_page = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
 // Make sure https is used
 if ($_SERVER['HTTPS'] != 'on') {
-    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    header('Location: ' . $index_page);
     exit();
 }
 
 // Start the session
 session_start();
+$_SESSION['index_page'] = $index_page;
 ?>
 
 <?php
@@ -21,13 +24,21 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
 }
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'none';
+
 if ($action === 'login') {
     require_once './action/login.php';
 }
 if ($action === 'logout') {
     require_once './action/logout.php';
 }
-$logged_in = isset($_SESSION['logged_in']) ? $_SESSION['logged_in'] : false;
+
+$google_login = isset($_SESSION['google_login']) ? $_SESSION['google_login'] : false;
+$default_login = isset($_SESSION['logged_in']) ? $_SESSION['logged_in'] : false;
+
+$logged_in = $default_login || $google_login;
+if ($logged_in) {
+    $_SESSION['csrf_token'] = uniqid('', true);
+}
 ?>
 
 <!DOCTYPE html>

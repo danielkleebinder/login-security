@@ -3,7 +3,7 @@ Author     : Daniel Kleebinder
 Created on : 26.04.2018
 -->
 
-<form class="col-md-offset-4 col-md-4" action="./index.php?action=login" method="post">
+<form id="login-form" class="col-md-offset-4 col-md-4" action="./index.php?action=login" method="post">
     <h2 style="margin-bottom: 25px;">Login Form</h2>
     <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
@@ -20,8 +20,12 @@ Created on : 26.04.2018
         </div>
     <?php } ?>
 
+    <!-- Default Login Button-->
     <button type="submit" class="btn btn-default col-md-7">Login</button>
+
+    <!-- Reset Form Button -->
     <button type="reset" onclick="$('.alert').hide();" class="btn btn-danger col-md-offset-1 col-md-4" style="margin-bottom: 25px;">Reset</button>
+
     <label>
         <input type="checkbox" name="remember" value="checked" <?php echo isset($remember) ? $remember : ''; ?>> <span>Remember me on this computer</span>
     </label>
@@ -30,7 +34,6 @@ Created on : 26.04.2018
     <meta name="google-signin-client_id" content="295673662324-6068fp36kff344hfcmn8bbc8q81190uh.apps.googleusercontent.com">
     <script type="text/javascript" src="https://apis.google.com/js/platform.js" async defer></script>
     <script type="text/javascript" src="./js/google.js"></script>
-
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
+    <div class="g-signin2 col-md-12" style="width: 360px; margin-top: 15px; padding-top: 0px; padding-left: 0px;" data-onsuccess="onSignIn"></div>
+    <!--<a href="#" onclick="signOut();">Sign out</a>-->
 </form>

@@ -49,7 +49,9 @@ function login_user($usr, $pwd) {
     $GLOBAL_PASSWORD = hash('sha256', 'ad123');
 
     $result = strcasecmp($usr, $GLOBAL_USERNAME) == 0 && $pwd === $GLOBAL_PASSWORD;
-    $_SESSION['username'] = ucfirst(strtolower($usr));
+    if ($result) {
+        $_SESSION['username'] = ucfirst(strtolower($usr));
+    }
     $_SESSION['logged_in'] = $result;
     return $result;
 }
