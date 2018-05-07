@@ -19,10 +19,43 @@ Created on : 26.04.2018
             <strong>Invalid Login: </strong> Your login credentials are wrong
         </div>
     <?php } ?>
-
+		
     <button type="submit" class="btn btn-default col-md-7">Login</button>
     <button type="reset" onclick="$('.alert').hide();" class="btn btn-danger col-md-offset-1 col-md-4" style="margin-bottom: 25px;">Reset</button>
     <label>
         <input type="checkbox" name="remember" value="checked" <?php echo isset($remember) ? $remember : ''; ?>> <span>Remember Me</span>
     </label>
 </form>
+
+<!--Google Sign-in-->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script type="text/javascript">
+		console.log("testing javascript");
+		function onSignIn(googleUser) {
+			console.log('TEEEEEEEEEEEEEEEEEEEEEEEEEST'); //TEST DELETE!!!
+		  var profile = googleUser.getBasicProfile();
+		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		  console.log('Name: ' + profile.getName());
+		  console.log('Image URL: ' + profile.getImageUrl());
+		  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		}
+		
+		  function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+			  console.log('User signed out.');
+			});
+		  }
+		</script>
+	<meta name="google-signin-client_id" content="553544134525-qkkn81bc0o57l9km2q119umdog04ikci.apps.googleusercontent.com">
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<a href="#" onclick="signOut();">Sign out</a>
+
+	
+	
+	
+	
+	
+	
+	
+	

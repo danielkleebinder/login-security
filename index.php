@@ -4,7 +4,7 @@ Created on : 26.04.2018
 -->
 
 <?php
-// Make sure https is used
+// Make sure https is used, otherwise redirect
 if ($_SERVER['HTTPS'] != 'on') {
     header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
     exit();
