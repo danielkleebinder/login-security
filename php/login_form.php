@@ -25,4 +25,12 @@ Created on : 26.04.2018
     <label>
         <input type="checkbox" name="remember" value="checked" <?php echo isset($remember) ? $remember : ''; ?>> <span>Remember me on this computer</span>
     </label>
+
+    <!-- Google Login -->
+    <meta name="google-signin-client_id" content="295673662324-6068fp36kff344hfcmn8bbc8q81190uh.apps.googleusercontent.com">
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript" src="./js/google.js"></script>
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
 </form>
