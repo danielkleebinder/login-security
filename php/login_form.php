@@ -34,6 +34,9 @@ Created on : 26.04.2018
     <meta name="google-signin-client_id" content="295673662324-6068fp36kff344hfcmn8bbc8q81190uh.apps.googleusercontent.com">
     <script type="text/javascript" src="https://apis.google.com/js/platform.js" async defer></script>
     <script type="text/javascript" src="./js/google.js"></script>
-    <div class="g-signin2 col-md-12" style="width: 360px; margin-top: 15px; padding-top: 0px; padding-left: 0px;" data-onsuccess="onSignIn"></div>
+    <div class="g-signin2 col-md-12"
+         style="width: 360px; margin-top: 15px; padding-top: 0px; padding-left: 0px;"
+         onclick="onClickSignIn()"
+         data-onsuccess="onSignIn"></div>
     <!--<a href="#" onclick="signOut();">Sign out</a>-->
 </form>

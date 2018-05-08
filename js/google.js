@@ -3,8 +3,17 @@
  Author     : Daniel Kleebinder
  */
 
+var clicked = false;
+
+function onClickSignIn() {
+    clicked = true;
+}
 
 function onSignIn(googleUser) {
+    if (!clicked) {
+        return;
+    }
+
     var id_token = googleUser.getAuthResponse().id_token;
     $.ajax({
         type: 'POST',
@@ -16,6 +25,13 @@ function onSignIn(googleUser) {
             }
             $('#login-form').submit();
         }
+    });
+    clicked = false;
+}
+
+function onLoad() {
+    gapi.load('auth2', function () {
+        gapi.auth2.init();
     });
 }
 
